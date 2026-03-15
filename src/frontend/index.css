@@ -1,0 +1,321 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 13 0.012 250;
+    --foreground: 96 0.005 250;
+    --card: 17 0.018 248;
+    --card-foreground: 96 0.005 250;
+    --popover: 17 0.018 248;
+    --popover-foreground: 96 0.005 250;
+    --primary: 72 0.19 186;
+    --primary-foreground: 10 0.01 250;
+    --secondary: 22 0.025 248;
+    --secondary-foreground: 90 0.01 250;
+    --muted: 20 0.02 248;
+    --muted-foreground: 58 0.04 248;
+    --accent: 78 0.17 74;
+    --accent-foreground: 10 0.01 250;
+    --destructive: 55 0.2 25;
+    --destructive-foreground: 96 0.005 250;
+    --border: 24 0.022 248;
+    --input: 22 0.025 248;
+    --ring: 72 0.19 186;
+    --radius: 0.625rem;
+    --chart-1: 72 0.19 186;
+    --chart-2: 78 0.17 74;
+    --chart-3: 65 0.16 300;
+    --chart-4: 68 0.18 160;
+    --chart-5: 55 0.2 25;
+    --sidebar: 15 0.015 250;
+    --sidebar-foreground: 90 0.01 250;
+    --sidebar-primary: 72 0.19 186;
+    --sidebar-primary-foreground: 10 0.01 250;
+    --sidebar-accent: 22 0.025 248;
+    --sidebar-accent-foreground: 90 0.01 250;
+    --sidebar-border: 24 0.022 248;
+    --sidebar-ring: 72 0.19 186;
+    --confidence-high: 68 0.2 155;
+    --confidence-medium: 78 0.17 74;
+    --confidence-low: 55 0.2 25;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grid-glow {
+    background-image:
+      linear-gradient(
+        oklch(72% 0.19 186 / 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        oklch(72% 0.19 186 / 0.04) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  .teal-glow {
+    box-shadow: 0 0 30px oklch(72% 0.19 186 / 0.15),
+      0 0 60px oklch(72% 0.19 186 / 0.06);
+  }
+
+  .amber-glow {
+    box-shadow: 0 0 20px oklch(78% 0.17 74 / 0.2);
+  }
+
+  .card-glass {
+    background: oklch(17% 0.018 248 / 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(72% 0.19 186 / 0.12);
+  }
+}
+
+/* Sign Avatar Animations */
+@keyframes sign-pose-1 {
+  0%,
+  14% {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+  15%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+@keyframes sign-pose-2 {
+  0%,
+  14% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  15%,
+  28% {
+    transform: rotate(60deg) translateY(-12px);
+  }
+  29%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+@keyframes sign-pose-3 {
+  0%,
+  28% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  29%,
+  42% {
+    transform: rotate(-30deg) translateY(-6px);
+  }
+  43%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+@keyframes arm-left-cycle {
+  0% {
+    transform: rotate(-20deg);
+  }
+  16% {
+    transform: rotate(-60deg) translateY(-10px);
+  }
+  33% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-45deg) translateY(-15px);
+  }
+  66% {
+    transform: rotate(25deg);
+  }
+  83% {
+    transform: rotate(-35deg) translateY(-8px);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes arm-right-cycle {
+  0% {
+    transform: rotate(20deg);
+  }
+  16% {
+    transform: rotate(55deg) translateY(-8px);
+  }
+  33% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(40deg) translateY(-12px);
+  }
+  66% {
+    transform: rotate(-25deg);
+  }
+  83% {
+    transform: rotate(30deg) translateY(-6px);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes hand-wiggle {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes body-sway {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  33% {
+    transform: translateX(-2px);
+  }
+  66% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-arm-left {
+  transform-origin: top center;
+  animation: arm-left-cycle 3s ease-in-out infinite;
+}
+
+.animate-arm-right {
+  transform-origin: top center;
+  animation: arm-right-cycle 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-hand-wiggle {
+  transform-origin: top center;
+  animation: hand-wiggle 0.8s ease-in-out infinite;
+}
+
+.animate-body-sway {
+  animation: body-sway 3s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.animate-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(72% 0.19 186 / 0.8),
+    transparent
+  );
+  animation: scan-line 2s linear infinite;
+}
+
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    oklch(17% 0.018 248) 0%,
+    oklch(22% 0.025 248) 50%,
+    oklch(17% 0.018 248) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
